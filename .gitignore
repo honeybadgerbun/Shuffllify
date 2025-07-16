@@ -3,6 +3,9 @@
 .env.local
 .env.production
 
+# Private documentation
+TECHNICAL_DEEP_DIVE.md
+
 # Python
 __pycache__/
 *.py[cod]
