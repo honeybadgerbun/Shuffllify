@@ -114,22 +114,25 @@ python app.py
 
 ### Free Public Deployment (Recommended)
 
-#### Railway - Best Free Option for Public Access 🚀
-- **Completely Free**: 500 hours/month (no credit card required)
+#### Render - Best Free Option for Spotify Compatibility 🚀
+- **Completely Free**: 750 hours/month (no credit card required)
+- **Spotify Compatible**: `.onrender.com` domains work with Spotify OAuth
 - **Public Access**: Anyone can use your app worldwide
 - **Easy Setup**: Just connect GitHub and deploy
 - **Automatic HTTPS**: Secure connections included
 - **Custom Domains**: Add your own domain later
 
-**📖 Complete deployment guide: [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)**
+**📖 Complete deployment guide: [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md)**
 
 **Quick deploy:**
-1. Go to [railway.app](https://railway.app)
+1. Go to [render.com](https://render.com)
 2. Connect your GitHub account
 3. Select your Shuffllify repository
-4. Add environment variables in Railway dashboard
+4. Add environment variables in Render dashboard
 5. Deploy automatically
 6. Share your public URL with the world!
+
+**Note**: Render is recommended because Spotify allows `.onrender.com` domains, while Railway requires a custom domain.
 
 #### 2. Render
 - **Free tier**: 750 hours/month
