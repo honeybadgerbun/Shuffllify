@@ -35,6 +35,11 @@ def index():
     """Main page"""
     return render_template('index.html')
 
+@app.route('/health')
+def health_check():
+    """Health check endpoint for Railway"""
+    return jsonify({'status': 'healthy', 'message': 'Shuffllify is running'}), 200
+
 @app.route('/login')
 def login():
     """Initiate Spotify login"""
@@ -209,4 +214,6 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    # Get port from environment variable (Railway sets PORT)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False) 
