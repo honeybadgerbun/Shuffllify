@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  shuffllify:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - REDIRECT_URI=${REDIRECT_URI:-http://localhost:5000/callback}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
