@@ -90,11 +90,28 @@ def shuffle_playlist():
         # Get playlist details
         playlist = sp.playlist(playlist_id)
         playlist_name = playlist['name']
-        tracks = playlist['tracks']['items']
         
-        # Extract track URIs
-        track_uris = [track['track']['uri'] for track in tracks if track['track']]
+        # Fetch ALL tracks in the playlist (Spotify returns only 100 at a time)
+        track_uris = []        
         
+        results = sp.playlist_items(
+            playlist_id,
+            offset=0,
+            limit=100,
+            fields="items.track.uri,next"
+        )
+
+        while True:
+        for item in results["items"]:
+            track = item.get("track")
+            if track and track.get("uri"):
+                track_uris.append(track["uri"])
+
+        if results["next"]:
+            results = sp.next(results)
+        else:
+            break
+
         if not track_uris:
             return jsonify({'error': 'No tracks found in playlist'}), 400
         
