@@ -102,15 +102,15 @@ def shuffle_playlist():
         )
 
         while True:
-        for item in results["items"]:
-            track = item.get("track")
-            if track and track.get("uri"):
-                track_uris.append(track["uri"])
+            for item in results["items"]:
+                track = item.get("track")
+                if track and track.get("uri"):
+                    track_uris.append(track["uri"])
 
-        if results["next"]:
-            results = sp.next(results)
-        else:
-            break
+            if results["next"]:
+                results = sp.next(results)
+            else:
+                break
 
         if not track_uris:
             return jsonify({'error': 'No tracks found in playlist'}), 400
